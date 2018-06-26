@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
+import 'datatables.net';
 
 @Component({
   selector: 'app-table',
@@ -8,10 +10,23 @@ import { Component, OnInit } from '@angular/core';
 export class TableComponent implements OnInit {
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
+  public tableWidget: any;
 
   constructor() { }
 
   ngOnInit() {
+    // document.getElementById("example").DataTable();
+  }
+
+  ngAfterViewInit() {
+    this.initDatatable()
+  }
+
+  private initDatatable(): void {
+    let exampleId: any = $('#example');
+    this.tableWidget = exampleId.DataTable({
+      select: true
+    });
   }
 
 }
