@@ -12,4 +12,5 @@ export class GenerateSinglesComponent implements OnInit {
   ngOnInit() {
   }
 
+
 }

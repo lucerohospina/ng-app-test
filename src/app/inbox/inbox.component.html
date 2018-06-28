@@ -1,4 +1,8 @@
 <app-header></app-header>
-<p>
-  inbox works!
-</p>
+<div class="container-fluid">
+  <h1>INBOX</h1>
+  <p>Hello {{ username }}</p>
+  <input type="text" [(ngModel)]="username">
+</div>
+<app-employee-list></app-employee-list>
+<app-footer></app-footer>

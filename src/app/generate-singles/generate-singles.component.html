@@ -1,4 +1,51 @@
 <app-header></app-header>
-<p>
-  generate-singles works!
-</p>
+<div class="container-fluid">
+  <div class="row py-2">
+    <div class="col-md-9">
+      <h6>Generación de Letras</h6>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-secondary btn-sm ">BOTON</button>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <!-- left side -->
+    <div class="col-md-7 border border-danger px-0">
+      <form class="container-fluid">
+        <div class="row">
+          <div class="col-md-8 form-group input-group-sm">
+            <label for="">Nombre del girador</label>
+            <input type="text" class="form-control" id="" placeholder="Ingrese aquí el nombre del girador">
+          </div>
+          <div class="col-md-4 form-group input-group-sm">
+            <label for="">Fecha de giro</label>
+            <input type="date" class="form-control" id="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-7 form-group input-group-sm">
+            <label for="">Referencia</label>
+            <input type="text" class="form-control" id="ipt-reference" placeholder="Ingrese aquí la referencia">            
+          </div>
+          <div class="col-md-5">
+            <label class="">Lugar de giro</label>
+            <select id="slct-place" class="custom-select custom-select-sm">
+              <option selected>Seleccione lugar de giro</option>
+              <option value="Miraflores">Miraflores</option>
+              <option value="San Isidro">San Isidro</option>
+              <option value="Magdalena del Mar">Magadalena del Mar</option>
+            </select>
+          </div>
+        </div>
+        <div class="row"></div>
+      </form>
+    </div>
+    <!-- right side -->
+    <div class="col-md-5 border border-warning">
+
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
