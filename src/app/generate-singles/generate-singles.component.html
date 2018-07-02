@@ -10,7 +10,7 @@
   </div>
 </div>
 <div class="container-fluid">
-  <div class="row">
+  <div class="row mb-5">
     <!-- left side -->
     <div class="col-md-7 border border-danger px-0">
       <form class="container-fluid">
@@ -39,13 +39,67 @@
             </select>
           </div>
         </div>
-        <div class="row"></div>
+        <div class="row">
+          <div class="col-md-2 form-group input-group-sm">
+            <label class="" for="ipt-quantity">Cantidad</label>
+            <input type="text" class="form-control" id="ipt-quantity">
+          </div>
+          <div class="col-md-2 form-group input-group-sm">
+            <label class="" for="ipt-amount">Monto</label>
+            <input type="text" class="form-control" id="ipt-amount">
+          </div>
+          <div class="col-md-4">
+            <label class="">Frecuencia de pago</label>
+            <select id="slct-frecuency" class="custom-select custom-select-sm fs-14">
+              <option selected>Seleccione la frecuencia</option>
+              <option value="15">15 días</option>
+              <option value="30">30 días</option>
+              <option value="45">45 días</option>
+              <option value="60">60 días</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" id="generate" class="btn btn-light px-4 border">CREAR</button>
+          </div>
+        </div>
       </form>
+      <!-- Sección que se GENERA -->
+      <div class="container-fluid">
+        <table class="table" >
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">N° de letra</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Fecha de Vencimiento</th>
+              <th scope="col">Ver</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let data of dataGenerated">
+            <tr>
+              <td>{{data.id}}</td>
+              <td>{{data.number}}</td>
+              <td>{{data.amount}}</td>
+              <td>{{data.due}}</td>
+              <td>EYE ICON</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="row py-3">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary btn-sm mr-2">GENERAR</button>
+            <button type="button" class="btn btn-link border border-primary btn-sm">LIMPIAR</button>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- right side -->
     <div class="col-md-5 border border-warning">
-
+      <input type="text" [(ngModel)]="userName">
+      <p>{{ userName }}</p>
+      <button type="button" class="btn btn-link border border-primary" [disabled]="userName === ''"
+      (click)="resetingInput()">LIMPIAR</button>
     </div>
   </div>
 </div>
-<app-footer></app-footer>
+<app-footer class="mt-5"></app-footer>

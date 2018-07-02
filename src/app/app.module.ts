@@ -62,7 +62,7 @@ const appRoutes:Routes = [
     BrowserAnimationsModule,
     MatTableModule
   ],
-  providers: [EmployeesService],
+  providers: [EmployeesService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
