@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { FormData }    from '../form-data';
 @Component({
   selector: 'app-generate-singles',
   templateUrl: './generate-singles.component.html',
@@ -8,16 +9,15 @@ import { DataService } from '../services/data.service';
 export class GenerateSinglesComponent implements OnInit {
   hasValue = false;
   userName = '';
-  // data que va venir del form
-  name='';
-  dateToday='';
-  reference='';
-  placeIssue='';
-  quantity='';
-  amount='';
-  frecuency='';
-
   public dataGenerated = [];
+
+  // data que va venir del form
+  places = ["Seleccione lugar", "Miraflores", "San Isidro", "Magdalena"];
+  frecuency = ["Selecciones frecuencia", "15 días", "30 días", "45 días", "60 días"];
+  public model = new FormData("", "", "", this.places[0], 0, 0, this.frecuency[0]);
+  public singleAmount:any;
+
+  submitted = false;
 
   constructor(private dataService: DataService) { }
 
@@ -26,19 +26,22 @@ export class GenerateSinglesComponent implements OnInit {
   }
 
   // evento input para cada input element del form
-  generateTable(event:Event) {
-    // this.name = (<HTMLInputElement>event.target).value;
-    this.dateToday = (<HTMLInputElement>event.target).value;
-    // this.reference = (<HTMLInputElement>event.target).value;
-    // this.placeIssue = (<HTMLInputElement>event.target).value;
-    // this.quantity = (<HTMLInputElement>event.target).value;
-    // this.amount = (<HTMLInputElement>event.target).value;
-    // this.frecuency = (<HTMLInputElement>event.target).value;
-    console.log(this.dateToday);
+  onSubmit() {
+    this.singleAmount = this.model.amount / this.model.quantity;
+    this.submitted = true;
+  }
+
+  // desaparece el form generado 
+  onReset() {
+    this.submitted = false;
+  }
+
+  // discard this later
+  get diagnostic() { 
+    return JSON.stringify(this.model); 
   }
 
   resetingInput() {
     this.userName = '';
   }
-
 }

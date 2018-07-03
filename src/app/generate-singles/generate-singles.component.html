@@ -13,58 +13,52 @@
   <div class="row mb-5">
     <!-- left side -->
     <div class="col-md-7 border border-danger px-0">
-      <form class="container-fluid">
+      <form class="container-fluid" (ngSubmit)="onSubmit()" #singleForm="ngForm">
         <div class="row">
           <div class="col-md-8 form-group input-group-sm">
-            <label for="">Nombre del girador</label>
-            <input type="text" class="form-control" id="" placeholder="Ingrese aquí el nombre del girador" (input)="generateTable($event)">
+            <label for="name">Nombre del girador</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="model.name" name="name">
           </div>
           <div class="col-md-4 form-group input-group-sm">
-            <label for="">Fecha de giro</label>
-            <input type="date" class="form-control" id="" (input)="generateTable($event)">
+            <label for="date">Fecha de giro</label>
+            <input type="date" class="form-control" id="date" [(ngModel)]="model.date" name="date">
           </div>
         </div>
         <div class="row">
           <div class="col-md-7 form-group input-group-sm">
-            <label for="">Referencia</label>
-            <input type="text" class="form-control" id="ipt-reference" placeholder="Ingrese aquí la referencia" (input)="generateTable($event)">            
+            <label for="reference">Referencia</label>
+            <input type="text" class="form-control" id="reference" [(ngModel)]="model.reference" name="reference">            
           </div>
           <div class="col-md-5">
-            <label class="">Lugar de giro</label>
-            <select id="slct-place" class="custom-select custom-select-sm" (input)="generateTable($event)">
-              <option selected>Seleccione lugar de giro</option>
-              <option value="Miraflores">Miraflores</option>
-              <option value="San Isidro">San Isidro</option>
-              <option value="Magdalena del Mar">Magadalena del Mar</option>
+            <label for="place">Lugar de giro</label>
+            <select id="place" class="custom-select custom-select-sm" [(ngModel)]="model.place" name="place">
+              <option *ngFor="let plc of places" [value]=plc>{{plc}}</option>
             </select>
           </div>
         </div>
         <div class="row">
           <div class="col-md-2 form-group input-group-sm">
-            <label class="" for="ipt-quantity">Cantidad</label>
-            <input type="text" class="form-control" id="ipt-quantity" (input)="generateTable($event)">
+            <label class="quantity" for="ipt-quantity">Cantidad</label>
+            <input type="text" class="form-control" id="quantity" [(ngModel)]="model.quantity" name="quantity">
           </div>
           <div class="col-md-2 form-group input-group-sm">
-            <label class="">Monto</label>
-            <input type="text" class="form-control" [(ngModel)]="amount" [ngModelOptions]="{standalone: true}" (input)="generateTable($event)">
+            <label class="amount">Monto</label>
+            <input type="text" class="form-control" id="amount" [(ngModel)]="model.amount" name="amount">
           </div>
           <div class="col-md-4">
-            <label class="">Frecuencia de pago</label>
-            <select id="slct-frecuency" class="custom-select custom-select-sm fs-14" (input)="generateTable($event)">
-              <option selected>Seleccione la frecuencia</option>
-              <option value="15">15 días</option>
-              <option value="30">30 días</option>
-              <option value="45">45 días</option>
-              <option value="60">60 días</option>
+            <label class="frecuency">Frecuencia de pago</label>
+            <select id="frecuency" class="custom-select custom-select-sm" [(ngModel)]="model.frecuency" name="frecuency">
+              <option *ngFor="let frc of frecuency" [value]="frc">{{frc}}</option>
             </select>
           </div>
           <div class="col-md-2">
-            <button type="submit" id="generate" class="btn btn-light px-4 border">CREAR</button>
+            <button type="submit" id="generate" class="btn btn-light px-4 border"
+            [disabled]=!singleForm.form.valid>CREAR</button>
           </div>
         </div>
       </form>
       <!-- Sección que se GENERA -->
-      <div class="container-fluid">
+      <div class="container-fluid" [hidden]="!submitted">
         <table class="table" >
           <thead>
             <tr>
@@ -75,12 +69,12 @@
               <th scope="col">Ver</th>
             </tr>
           </thead>
-          <tbody *ngFor="let data of dataGenerated">
+          <tbody *ngFor="let data of dataGenerated;let i = index" [attr.data-index]="i">
             <tr>
-              <td>{{data.id}}</td>
+              <td>{{i}}</td>
               <td>{{data.number}}</td>
-              <td>{{data.amount}}</td>
-              <td>{{data.due }}</td>
+              <td>{{singleAmount}}</td>
+              <td>{{model.date}}</td>
               <td><i class="fas fa-eye"></i></td>
             </tr>
           </tbody>
@@ -88,7 +82,7 @@
         <div class="row py-3">
           <div class="col-md-6">
             <button type="button" class="btn btn-primary btn-sm mr-2">GENERAR</button>
-            <button type="button" class="btn btn-link border border-primary btn-sm">LIMPIAR</button>
+            <button type="button" class="btn btn-link border border-primary btn-sm" (click)="onReset()">LIMPIAR</button>
           </div>
         </div>
       </div>
@@ -100,6 +94,13 @@
       <p>{{ userName }}</p>
       <button type="button" class="btn btn-link border border-primary" [disabled]="userName === ''"
       (click)="resetingInput()">LIMPIAR</button>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <p>{{diagnostic}}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

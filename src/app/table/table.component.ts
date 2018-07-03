@@ -26,7 +26,6 @@ export class TableComponent implements OnInit {
       select: true
     });
   }
-
 }
 
 
