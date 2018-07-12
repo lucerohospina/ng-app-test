@@ -1,27 +1,22 @@
 # App Test
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+Repositorio de práctica sobre Angular 6.
 
-## Development server
+Herramientas utilizadas: 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* [Data Table](https://datatables.net/)
 
-## Code scaffolding
+* [Angular services](https://angular.io/tutorial/toh-pt4)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* [Angular ngModel api](https://angular.io/api/forms/NgModel)
 
-## Build
+* [Angular routing](https://angular.io/tutorial/toh-pt5)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Fuentes: 
 
-## Running unit tests
+* Maximilian Schwarzmüller curso de [Udemy](https://www.udemy.com/the-complete-guide-to-angular-2/learn/v4/content)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Serie de tutoriales de [Codevolution](https://www.youtube.com/watch?v=nGr3C3wbh9c)
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
